@@ -194,6 +194,8 @@ class ApiClient {
           return ChallengeResponse.fromJson(value);
         case 'ChallengeResponseData':
           return ChallengeResponseData.fromJson(value);
+        case 'DidDocument':
+          return DidDocument.fromJson(value);
         case 'HealthResponse':
           return HealthResponse.fromJson(value);
         case 'MethodsResponse':
@@ -202,10 +204,10 @@ class ApiClient {
           return MethodsResponseDataInner.fromJson(value);
         case 'ResolveResponse':
           return ResolveResponse.fromJson(value);
-        case 'ResolveResponseData':
-          return ResolveResponseData.fromJson(value);
         case 'TokenRequest':
           return TokenRequest.fromJson(value);
+        case 'VerificationMethod':
+          return VerificationMethod.fromJson(value);
         case 'VerifyRequest':
           return VerifyRequest.fromJson(value);
         case 'VerifyResponse':

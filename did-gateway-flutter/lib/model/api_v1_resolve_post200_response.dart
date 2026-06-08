@@ -25,7 +25,7 @@ class ApiV1ResolvePost200Response {
   ///
   bool? success;
 
-  List<Object> data;
+  List<DidDocument> data;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is ApiV1ResolvePost200Response &&
@@ -72,7 +72,7 @@ class ApiV1ResolvePost200Response {
 
       return ApiV1ResolvePost200Response(
         success: mapValueOfType<bool>(json, r'success'),
-        data: Object.listFromJson(json[r'data']),
+        data: DidDocument.listFromJson(json[r'data']),
       );
     }
     return null;

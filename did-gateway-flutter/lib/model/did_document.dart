@@ -10,9 +10,9 @@
 
 part of openapi.api;
 
-class ResolveResponseData {
-  /// Returns a new [ResolveResponseData] instance.
-  ResolveResponseData({
+class DidDocument {
+  /// Returns a new [DidDocument] instance.
+  DidDocument({
     this.atContext,
     this.id,
     this.verificationMethod = const [],
@@ -36,14 +36,14 @@ class ResolveResponseData {
   ///
   String? id;
 
-  List<Object> verificationMethod;
+  List<VerificationMethod> verificationMethod;
 
   List<String> authentication;
 
   List<String> assertionMethod;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is ResolveResponseData &&
+  bool operator ==(Object other) => identical(this, other) || other is DidDocument &&
     other.atContext == atContext &&
     other.id == id &&
     _deepEquality.equals(other.verificationMethod, verificationMethod) &&
@@ -60,7 +60,7 @@ class ResolveResponseData {
     (assertionMethod.hashCode);
 
   @override
-  String toString() => 'ResolveResponseData[atContext=$atContext, id=$id, verificationMethod=$verificationMethod, authentication=$authentication, assertionMethod=$assertionMethod]';
+  String toString() => 'DidDocument[atContext=$atContext, id=$id, verificationMethod=$verificationMethod, authentication=$authentication, assertionMethod=$assertionMethod]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -80,10 +80,10 @@ class ResolveResponseData {
     return json;
   }
 
-  /// Returns a new [ResolveResponseData] instance and imports its values from
+  /// Returns a new [DidDocument] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static ResolveResponseData? fromJson(dynamic value) {
+  static DidDocument? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -92,16 +92,16 @@ class ResolveResponseData {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "ResolveResponseData[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "ResolveResponseData[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "DidDocument[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "DidDocument[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
-      return ResolveResponseData(
+      return DidDocument(
         atContext: mapValueOfType<Object>(json, r'@context'),
         id: mapValueOfType<String>(json, r'id'),
-        verificationMethod: Object.listFromJson(json[r'verificationMethod']),
+        verificationMethod: VerificationMethod.listFromJson(json[r'verificationMethod']),
         authentication: json[r'authentication'] is Iterable
             ? (json[r'authentication'] as Iterable).cast<String>().toList(growable: false)
             : const [],
@@ -113,11 +113,11 @@ class ResolveResponseData {
     return null;
   }
 
-  static List<ResolveResponseData> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <ResolveResponseData>[];
+  static List<DidDocument> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <DidDocument>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = ResolveResponseData.fromJson(row);
+        final value = DidDocument.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -126,12 +126,12 @@ class ResolveResponseData {
     return result.toList(growable: growable);
   }
 
-  static Map<String, ResolveResponseData> mapFromJson(dynamic json) {
-    final map = <String, ResolveResponseData>{};
+  static Map<String, DidDocument> mapFromJson(dynamic json) {
+    final map = <String, DidDocument>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = ResolveResponseData.fromJson(entry.value);
+        final value = DidDocument.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -140,14 +140,14 @@ class ResolveResponseData {
     return map;
   }
 
-  // maps a json object with a list of ResolveResponseData-objects as value to a dart map
-  static Map<String, List<ResolveResponseData>> mapListFromJson(dynamic json, {bool growable = false,}) {
-    final map = <String, List<ResolveResponseData>>{};
+  // maps a json object with a list of DidDocument-objects as value to a dart map
+  static Map<String, List<DidDocument>> mapListFromJson(dynamic json, {bool growable = false,}) {
+    final map = <String, List<DidDocument>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = ResolveResponseData.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = DidDocument.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;

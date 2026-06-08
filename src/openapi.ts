@@ -162,7 +162,17 @@ Provides DID resolution (did:pkh, did:key), cryptographic challenge generation, 
         responses: {
           '200': {
             description: 'Batch resolve results',
-            content: { 'application/json': { schema: { type: 'object', properties: { success: { type: 'boolean' }, data: { type: 'array', items: { type: 'object' } } } } } },
+            content: {
+              'application/json': {
+                schema: {
+                  type: 'object',
+                  properties: {
+                    success: { type: 'boolean' },
+                    data: { type: 'array', items: { $ref: '#/components/schemas/DidDocument' } },
+                  },
+                },
+              },
+            },
           },
         },
       },
@@ -329,16 +339,27 @@ Provides DID resolution (did:pkh, did:key), cryptographic challenge generation, 
         type: 'object',
         properties: {
           success: { type: 'boolean', example: true },
-          data: {
-            type: 'object',
-            properties: {
-              '@context': { type: 'object' },
-              id: { type: 'string' },
-              verificationMethod: { type: 'array', items: { type: 'object' } },
-              authentication: { type: 'array', items: { type: 'string' } },
-              assertionMethod: { type: 'array', items: { type: 'string' } },
-            },
-          },
+          data: { $ref: '#/components/schemas/DidDocument' },
+        },
+      },
+      DidDocument: {
+        type: 'object',
+        properties: {
+          '@context': { type: 'object' },
+          id: { type: 'string' },
+          verificationMethod: { type: 'array', items: { $ref: '#/components/schemas/VerificationMethod' } },
+          authentication: { type: 'array', items: { type: 'string' } },
+          assertionMethod: { type: 'array', items: { type: 'string' } },
+        },
+      },
+      VerificationMethod: {
+        type: 'object',
+        properties: {
+          id: { type: 'string' },
+          type: { type: 'string' },
+          controller: { type: 'string' },
+          publicKeyMultibase: { type: 'string' },
+          blockchainAccountId: { type: 'string' },
         },
       },
     },
