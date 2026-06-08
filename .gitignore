@@ -3,3 +3,5 @@ dist/
 .wrangler/
 .env
 *.local.json
+CLAUDE.md
+wrangler.toml
