@@ -85,7 +85,7 @@ export async function verifyAuth(
     await db.logOperation({
       did,
       opType: 'verify_fail',
-      detail: verifyResult.error,
+      detail: `${verifyResult.error} (address: ${address})`,
       ip,
     });
     return { success: false, error: { status: 401, error: verifyResult.error } };

@@ -57,8 +57,7 @@ export function verifyEip191(
   const msgHash = eip191Hash(message);
 
   try {
-    const sig = secp256k1.Signature.fromCompact(new Uint8Array([...r, ...s]));
-    sig.addRecoveryBit(recoveryId);
+    const sig = secp256k1.Signature.fromCompact(new Uint8Array([...r, ...s])).addRecoveryBit(recoveryId);
 
     const recoveredPoint = sig.recoverPublicKey(msgHash);
     const uncompressedPub = recoveredPoint.toRawBytes(false); // 0x04 + x + y
