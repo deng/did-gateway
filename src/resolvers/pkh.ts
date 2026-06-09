@@ -34,8 +34,11 @@ function parseDidPkh(did: string): { namespace: string; reference: string; addre
  */
 function getVerificationMethodType(namespace: string): string {
   if (namespace.startsWith('eip155')) return 'EcdsaSecp256k1RecoveryMethod2020';
-  if (namespace.startsWith('solana')) return 'Ed25519VerificationKey2018';
   if (namespace.startsWith('bip122')) return 'EcdsaSecp256k1VerificationKey2019';
+  if (namespace.startsWith('solana') ||
+      namespace.startsWith('aptos') ||
+      namespace.startsWith('sui') ||
+      namespace.startsWith('ton')) return 'Ed25519VerificationKey2018';
   return 'VerificationMethod'; // fallback
 }
 
